@@ -41,10 +41,8 @@ export default class Home extends Component<HomeProps, HomeState> {
     return fetch('http://localhost:5000')
       .then(response => response.json())
       .then((data: APIData) => {
-        console.log('Data: ', data);
         return data;
       }).catch((err) => {
-        console.log('Error: ', err);
         return null;
       });
   }
