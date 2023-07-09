@@ -2,9 +2,13 @@
 
 import Header from '@/components/header';
 import Product from '@/components/product';
-import { APIData, PlanListData } from '@/models/product.model';
+import { HomeProps, HomeState } from '@/models/home.model';
+import { APIData } from '@/models/product.model';
 import React, { Component } from 'react';
 
+/**
+ * Home Component Class from where everything is controlled
+ */
 export default class Home extends Component<HomeProps, HomeState> {
   constructor(props: HomeProps) {
     super(props);
@@ -18,6 +22,9 @@ export default class Home extends Component<HomeProps, HomeState> {
     this.updateState();
   }
 
+  /**
+   * To update the state of the component after data received from API
+   */
   async updateState() {
     const results = await this.getPlanList();
     this.setState({
@@ -25,6 +32,11 @@ export default class Home extends Component<HomeProps, HomeState> {
       total: results?.data?.electricity?.length || 0
     });
   }
+
+  /**
+   * To get the data from the backend server
+   * @returns API data response object
+   */
   getPlanList() {
     return fetch('http://localhost:5000')
       .then(response => response.json())
@@ -36,6 +48,11 @@ export default class Home extends Component<HomeProps, HomeState> {
         return null;
       });
   }
+
+  /**
+   * To render the component UI
+   * @returns JSX to render component
+   */
   render() {
     const { total, data } = this.state;
     return (
@@ -46,8 +63,3 @@ export default class Home extends Component<HomeProps, HomeState> {
     )
   }
 }
-type HomeProps = {};
-type HomeState = {
-  data: PlanListData[],
-  total: number
-};

@@ -1,10 +1,18 @@
+import { EstimatedCostProps } from '@/models/estimatedCost.model';
 import React, { Component } from 'react';
 
+/**
+ * Child Component to display the Estimated Cost Info in card for the Product Component
+ */
 export default class EstimatedCost extends Component<EstimatedCostProps> {
     constructor(props: EstimatedCostProps) {
         super(props);
     }
 
+    /**
+     * To render the component UI
+     * @returns JSX to render component
+     */
     render() {
         const { annualBillAmount, monthlyBillAmount } = this.props;
         return (
@@ -26,8 +34,3 @@ export default class EstimatedCost extends Component<EstimatedCostProps> {
         )
     }
 }
-
-type EstimatedCostProps = {
-    annualBillAmount: number;
-    monthlyBillAmount: number;
-};

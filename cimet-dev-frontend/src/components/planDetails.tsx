@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import Image from 'next/image';
+import { PlanDetailsProps } from '@/models/planDetails.model';
 
+/**
+ * Child Component to display the Plan Details info in card for the Product Component
+ */
 export default class PlanDetails extends Component<PlanDetailsProps> {
     constructor(props: PlanDetailsProps) {
         super(props);
     }
+
+    /**
+     * To render the component UI
+     * @returns JSX to render component
+     */
     render() {
         const {providerName, providerImage, planDetails, planDocument } = this.props;
         return (
@@ -32,10 +41,3 @@ export default class PlanDetails extends Component<PlanDetailsProps> {
         )
     }
 }
-
-type PlanDetailsProps = {
-    providerName: string;
-    providerImage: string;
-    planDetails: string;
-    planDocument: string
-};

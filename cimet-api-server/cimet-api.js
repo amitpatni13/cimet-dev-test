@@ -1,4 +1,7 @@
 import needle from 'needle';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 let token = ''; // Global variable to store token
 
@@ -9,7 +12,7 @@ const getToken = () => {
     const url = 'https://devcore02.cimet.io/v1/generate-token';
     const method = 'post';
     const headers = {
-        'api-key': '4NKQ3-815C2-8T5Q2-16318-55301',
+        'api-key': process.env.CIMET_API_KEY,
     };
     const body = {};
     return needle(method, url, body, { json: true, headers }).then((response) => {
@@ -22,16 +25,17 @@ const getToken = () => {
 
 /**
  * To get the plan list
+ * @param authToken Token for authentication
  */
 const getPlanList = (authToken) => {
     const url = 'https://devcore02.cimet.io/v1/plan-list';
     const method = 'post';
     const headers = {
-        'api-key': '4NKQ3-815C2-8T5Q2-16318-55301',
+        'api-key': process.env.CIMET_API_KEY,
         'auth-token' : authToken
     };
     const body = {
-        session_id:'eyJpdiI6IkVNUkZ1N0hlSHhHSnJ3Vjl4aUlxc0E9PSIsInZhbHVlIjoieFlxa1wvVDYxQWl5U2pxMDFcL0R6ZVVvdEN6Mkk0R29TRDN3ZnN0U3VGcER0cEFMa2NVb0xNcDJudjlRTHRUbGJkIiwibWFjIjoiMTE0MmU0MGE5YmJhMzY4Nzc4MDExNmZkNTI1MjZhMGE3OTQyMDZmOTc1MTVmZDM1Mzc3ZmJmNjhmMzllOGYxYSJ9'
+        session_id: process.env.CIMET_SESSION_ID
     };
     return needle(method, url, body, { json: true, headers }).then(async (response) => {
         // Token Expired Response: { status: 0, message: 'Your token has been expired.' }

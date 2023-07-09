@@ -1,19 +1,29 @@
+import { PlanInfoProps } from '@/models/planInfo.model';
 import React, { Component } from 'react';
 
+/**
+ * Child Component to display the Plan info in card for the Product Component
+ */
 export default class PlanInfo extends Component<PlanInfoProps> {
 
     constructor(props: PlanInfoProps) {
         super(props);
     }
+
     componentDidMount() {
-        this.checkOverflow();
+        this.checkOverflow(); // Initialized on page load
+        // Event added on page load into view
         window.addEventListener('resize', this.checkOverflow);
     }
 
     componentWillUnmount() {
+        // Event removed on page removed from view
         window.removeEventListener('resize', this.checkOverflow);
     }
 
+    /**
+     * To display or hide the title toolip based on screen size
+     */
     checkOverflow() {
         const element = document.getElementById('planDesc');
         if (element) {
@@ -26,6 +36,10 @@ export default class PlanInfo extends Component<PlanInfoProps> {
         }
     }
 
+    /**
+     * To render the component UI
+     * @returns JSX to render component
+     */
     render() {
         const { dmoPercentageAusgrid, planNameBelowData, months, contractLength, exitFee, planDesc } = this.props;
         return (
@@ -58,17 +72,7 @@ export default class PlanInfo extends Component<PlanInfoProps> {
                         <span>Standard feed in tariff: 5c</span>
                     </div>
                 </div>
-
             </div>
         )
     }
 }
-
-type PlanInfoProps = {
-    dmoPercentageAusgrid: string;
-    planNameBelowData: string;
-    months: number;
-    contractLength: string;
-    exitFee: string;
-    planDesc: string;
-};

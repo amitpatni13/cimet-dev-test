@@ -1,12 +1,8 @@
+import { EnergyType, SolarCompatible } from "@/models/productHeaders.model";
 
-interface SolarCompatible {
-    solarCompatible: string;
-}
-
-interface EnergyType {
-    energyType: string;
-}
-
+/**
+ * Functional Component to display the Solar Header for the card on Product Component
+ */
 export const ProductHeaderSolar = ({ solarCompatible }: SolarCompatible) => {
     if ('yes' === solarCompatible) {
         return <span className='w-auto secondary-bg-color rounded py-1 px-2 mx-2'>
@@ -16,6 +12,9 @@ export const ProductHeaderSolar = ({ solarCompatible }: SolarCompatible) => {
     return <span></span>;
 }
 
+/**
+ * Functional Component to display the Electricity Header for the card on Product Component
+ */
 export const ProductHeaderElectricity = ({ energyType }: EnergyType) => {
     if ('electricity' === energyType) {
         return <span className='w-auto secondary-bg-color rounded py-1 px-2 mx-1'>

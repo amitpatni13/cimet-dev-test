@@ -1,5 +1,5 @@
 
-import { PlanListData } from '@/models/product.model';
+import { PlanListData, ProductProps } from '@/models/product.model';
 import React, { Component } from 'react';
 import './product.css';
 import { ProductHeaderSolar, ProductHeaderElectricity } from '@/utils/ProductHeaders';
@@ -8,11 +8,18 @@ import PlanInfo from './planInfo';
 import EstimatedCost from './estimatedCost';
 import ConnectInfo from './connectInfo';
 
+/**
+ * Child Component to display the Product info for the Home Component
+ */
 export default class Product extends Component<ProductProps> {
     constructor(props: ProductProps) {
         super(props);
     }
 
+    /**
+     * To render the component UI
+     * @returns JSX to render component
+     */
     render() {
         const  { data } = this.props;
         return (
@@ -47,7 +54,3 @@ export default class Product extends Component<ProductProps> {
         )
     }
 }
-
-type ProductProps = {
-    data: PlanListData[];
-};

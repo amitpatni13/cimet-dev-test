@@ -32,3 +32,7 @@ export interface PlanListData { // Only declaring the properties needed to build
     expected_annually_bill_amount: number;
     expected_monthly_bill_amount: number;
 }
+
+export type ProductProps = {
+    data: PlanListData[];
+}

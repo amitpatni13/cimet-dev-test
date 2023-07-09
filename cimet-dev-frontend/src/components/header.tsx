@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import './header.css';
+import { HeaderProps } from '@/models/header.model';
 
-
+/**
+ * Child Component to display the Header info for the Home Component
+ */
 export default class Header extends Component<HeaderProps> {
     constructor(props: HeaderProps) {
         super(props);
     }
 
+    /**
+     * To render the component UI
+     * @returns JSX to render component
+     */
     render() {
         return (
             <div className='main'>
@@ -38,8 +45,4 @@ export default class Header extends Component<HeaderProps> {
         )
     }
 }
-
-type HeaderProps = {
-    total: number;
-};
 

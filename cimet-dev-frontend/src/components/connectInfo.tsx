@@ -1,9 +1,18 @@
+import { ConnectInfoProps } from '@/models/connectInfo.model';
 import React, { Component } from 'react'
 
+/**
+ * Component to render the Connect Info in card for the Product Component
+ */
 export default class ConnectInfo extends Component<ConnectInfoProps> {
     constructor(props: ConnectInfoProps) {
         super(props);
     }
+
+    /**
+     * To render the component UI
+     * @returns JSX to render component
+     */
     render() {
         const { coolingOffPeriod } = this.props;
         return (
@@ -38,7 +47,3 @@ export default class ConnectInfo extends Component<ConnectInfoProps> {
         )
     }
 }
-
-type ConnectInfoProps = {
-    coolingOffPeriod: string;
-};
