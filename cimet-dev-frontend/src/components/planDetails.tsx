@@ -26,13 +26,13 @@ export default class PlanDetails extends Component<PlanDetailsProps> {
                     </div>
                     <div className='col-12 col-md-12 col-lg-12'>
                         <div className='text-center'>
-                            <a className='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' 
+                            <a className='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover cursor-pointer' 
                                 href={planDetails} target='_blank'>View Details</a>
                         </div>
                     </div>
                     <div className='col-12 col-md-12 col-lg-12'>
                         <div className='text-center my-1'>
-                            <a className='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' 
+                            <a className='link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover cursor-pointer' 
                                 href={planDocument} target='_blank'>Basic plan Information Document</a>
                         </div>
                     </div>

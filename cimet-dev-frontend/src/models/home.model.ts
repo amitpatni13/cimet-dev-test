@@ -4,5 +4,6 @@ export type HomeProps = {}
 
 export type HomeState = {
   data: PlanListData[],
-  total: number
+  total: number,
+  isLoading: boolean
 }

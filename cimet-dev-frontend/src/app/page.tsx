@@ -14,7 +14,8 @@ export default class Home extends Component<HomeProps, HomeState> {
     super(props);
     this.state = {
       data: [],
-      total: 0
+      total: 0,
+      isLoading: true
     };
   }
 
@@ -38,9 +39,11 @@ export default class Home extends Component<HomeProps, HomeState> {
    * @returns API data response object
    */
   getPlanList() {
+    this.setState({ isLoading: true });
     return fetch('http://localhost:5000')
       .then(response => response.json())
       .then((data: APIData) => {
+        this.setState({ isLoading: false });
         return data;
       }).catch((err) => {
         return null;
@@ -52,12 +55,18 @@ export default class Home extends Component<HomeProps, HomeState> {
    * @returns JSX to render component
    */
   render() {
-    const { total, data } = this.state;
+    const { total, data, isLoading } = this.state;
     return (
-      <>
-        <Header total={total} />
-        <Product data={data} />
-      </>
+      <div>
+        {isLoading ? (
+          <div className="loader"></div>
+        ) : (
+          <>
+            <Header total={total} />
+            <Product data={data} />
+          </>
+        )}
+    </div>
     )
   }
 }
